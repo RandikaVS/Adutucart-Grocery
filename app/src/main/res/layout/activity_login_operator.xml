@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".loginRegister.LoginOperatorActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_color"
+        tools:context=".loginRegister.LoginOperatorActivity">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <ImageView
+                android:id="@+id/back_arrow"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/back_arrow"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LOGIN"
+                android:textSize="35sp"
+                android:textColor="@color/black"
+                android:layout_marginStart="16dp"
+                android:shadowColor="#D3B7A6"
+                android:shadowDx="7"
+                android:layout_marginTop="10dp"
+                android:shadowDy="7"
+                android:shadowRadius="10"
+                android:fontFamily="@font/nova_square"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(OPERATOR)"
+                android:textSize="35sp"
+                android:textColor="@color/black"
+                android:layout_marginStart="16dp"
+                android:shadowColor="#D3B7A6"
+                android:shadowDx="7"
+                android:layout_marginTop="10dp"
+                android:shadowDy="7"
+                android:shadowRadius="10"
+                android:fontFamily="@font/nova_square"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#954411"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="5dp"
+                >
+
+                <EditText
+                    android:id="@+id/email_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:backgroundTint="@android:color/transparent"
+                    android:fontFamily="@font/nova_square"
+                    android:hint="EMAIL ADDRESS"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#FFF3E0"
+                    android:textColorHint="#FFF3E0"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#954411"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="15dp"
+                >
+
+                <EditText
+                    android:id="@+id/password_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:backgroundTint="@android:color/transparent"
+                    android:fontFamily="@font/nova_square"
+                    android:hint="PASSWORD"
+                    android:inputType="textPassword"
+                    android:textColor="#FFF3E0"
+                    android:textColorHint="#FFF3E0"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/loginOperator"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#010000"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="15dp"
+                >
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    tools:ignore="MissingConstraints" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="LOGIN AS OPERATOR"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="57dp"
+                    tools:layout_editor_absoluteY="8dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="384dp"
+                android:layout_height="311dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="48dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.142"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/loginOperator"
+                app:layout_constraintVertical_bias="0.857"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="login2.json" />
+
+
+
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+

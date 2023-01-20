@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    tools:context=".loginRegister.EmailRegistrationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:id="@+id/back_arrow"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/back_arrow"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="REGISTER"
+            android:textSize="35sp"
+            android:textColor="@color/black"
+            android:layout_marginStart="16dp"
+            android:shadowColor="#D3B7A6"
+            android:shadowDx="7"
+            android:layout_marginTop="10dp"
+            android:shadowDy="7"
+            android:shadowRadius="10"
+            android:fontFamily="@font/nova_square"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#954411"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="5dp"
+            >
+
+            <EditText
+                android:id="@+id/email_editText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:backgroundTint="@android:color/transparent"
+                android:fontFamily="@font/nova_square"
+                android:hint="EMAIL ADDRESS"
+                android:inputType="textEmailAddress"
+                android:textColor="#FFF3E0"
+                android:textColorHint="#FFF3E0"
+                android:textSize="20sp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#954411"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="15dp"
+            >
+
+            <EditText
+                android:id="@+id/password_editText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:backgroundTint="@android:color/transparent"
+                android:fontFamily="@font/nova_square"
+                android:inputType="textPassword"
+
+                android:hint="PASSWORD"
+                android:textColor="#FFF3E0"
+                android:textColorHint="#FFF3E0"
+                android:textSize="20sp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#954411"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="15dp"
+            >
+
+            <EditText
+                android:id="@+id/name_editText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:backgroundTint="@android:color/transparent"
+                android:fontFamily="@font/nova_square"
+                android:inputType="textPersonName"
+                android:hint="NAME"
+                android:textColor="#FFF3E0"
+                android:textColorHint="#FFF3E0"
+                android:textSize="20sp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#954411"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="15dp"
+            >
+
+            <EditText
+                android:id="@+id/cellphone_editText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:backgroundTint="@android:color/transparent"
+                android:fontFamily="@font/nova_square"
+                android:inputType="phone"
+                android:hint="CELLPHONE NO."
+                android:textColor="#FFF3E0"
+                android:textColorHint="#FFF3E0"
+                android:textSize="20sp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#954411"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="15dp"
+            >
+
+            <EditText
+                android:id="@+id/proof_editText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:backgroundTint="@android:color/transparent"
+                android:fontFamily="@font/nova_square"
+                android:hint="@string/proof_of_valid_id_for_verification"
+                android:inputType="textNoSuggestions"
+                android:textColor="#FFF3E0"
+                android:textColorHint="#FFF3E0"
+                android:textSize="13sp" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/registerBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="16dp"
+            android:background="#010000"
+            android:clickable="true"
+            android:text="REGISTER"
+            android:textColor="@color/white"
+            android:textSize="25sp">
+
+            <!--            <TextView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_centerInParent="true"-->
+            <!--                android:clickable="true"-->
+            <!--                android:text="REGISTER"-->
+            <!--                android:textColor="@color/white"-->
+            <!--                android:textSize="25sp" />-->
+
+        </Button>
+
+        <Button
+            android:id="@+id/registerOperator"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="16dp"
+            android:background="#010000"
+            android:clickable="true"
+            android:text="REGISTER AS OPERATOR"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <!--            <TextView-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_centerInParent="true"-->
+        <!--                android:text="REGISTER AS OPERATOR"-->
+        <!--                android:textColor="@color/white"-->
+        <!--                android:textSize="25sp" />-->
+
+
+    </LinearLayout>
+</ScrollView>
