@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/backgroungColor"
     tools:context="com.example.adutucart5.activity.CartActivity">
 
@@ -47,15 +48,69 @@
         android:background="#D3FFFFFF" />
 
 
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/address_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:elevation="20dp"
+            android:padding="@dimen/margin_10dp"
+            android:visibility="gone"
+            android:orientation="vertical"
+            android:weightSum="2">
+
+            <EditText
+                android:id="@+id/order_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:lines="6"
+                android:minLines="2"
+                android:maxLines="10"
+                android:scrollbars="vertical"
+                android:gravity="top|start"
+                android:hint="Address"/>
+
+            <RadioGroup
+                android:layout_marginTop="20dp"
+                android:id="@+id/group_radio"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <!-- In RadioGroup create the 1 Radio Button-->
+                <!-- like this we will add some more Radio Button-->
+                <RadioButton
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radia_id1"
+                    android:text="Debit/Credit Card"
+                    android:textSize="20sp"/>
+
+                <RadioButton
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radia_id2"
+                    android:text="Cash on delivery"
+                    android:textSize="20sp"/>
+
+
+            </RadioGroup>
+
+        </LinearLayout>
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cart_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/address_bar"
             android:layout_marginBottom="50dp">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -94,11 +149,18 @@
                     android:textStyle="bold"
                     android:visibility="gone" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Php :  "
+                    android:textColor="@color/color_spicy"
+                    android:textSize="18sp"/>
+
                 <com.example.adutucart5.customfonts.MyTextViewInterRegular
                     android:id="@+id/total_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$12"
+                    android:text="00.00"
                     android:textColor="@color/colorPrimary"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -106,6 +168,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/checkout_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -137,6 +200,101 @@
         android:layout_centerInParent="true"
         android:background="@drawable/empty_cart_img"
         android:visibility="gone" />
+
+
+
+    <LinearLayout
+        android:id="@+id/order_last_anim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/after_order_animation"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/order_last_animation"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_corner"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thank you for shipping"
+                android:textColor="@color/white"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shop again"
+                android:textColor="@color/white"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Please rate our service Thank you again!"
+                android:textColor="@color/gen_white"
+                android:layout_gravity="center"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/star_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:src="@drawable/empty_star"/>
+                <ImageView
+                    android:id="@+id/star_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:src="@drawable/empty_star"/>
+                <ImageView
+                    android:id="@+id/star_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:src="@drawable/empty_star"/>
+                <ImageView
+                    android:id="@+id/star_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:src="@drawable/empty_star"/>
+                <ImageView
+                    android:id="@+id/star_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:src="@drawable/empty_star"/>
+
+                <ImageView
+                    android:id="@+id/arr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/rounded_corner"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 
 </RelativeLayout>

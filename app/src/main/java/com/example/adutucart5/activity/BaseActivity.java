@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.adutucart5.model.Cart2;
+import com.example.adutucart5.model.Order2;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.example.adutucart5.interfaces.AddorRemoveCallbacks;
@@ -30,6 +32,7 @@ public class BaseActivity extends AppCompatActivity implements AddorRemoveCallba
     private static final int MY_PERMISSIONS_REQUEST_CAMERA = 20;
     List<Cart> cartList = new ArrayList<Cart>();
     List<Order> orderList = new ArrayList<Order>();
+    List<Cart2> cart2List = new ArrayList<>();
     Gson gson;
     LocalStorage localStorage;
     String userJson;

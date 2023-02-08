@@ -9,7 +9,9 @@ public class Admin {
     public String password;
     public String imageUrl;
 
-    public int status;
+    public String status;
+
+
 
     public Admin(){}
 
@@ -19,18 +21,27 @@ public class Admin {
         this.mobile = mobile;
         this.password = password;
         this.imageUrl = imageUrl;
-        this.status = 0;
+        this.status = "0";
+    }
+
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

@@ -7,10 +7,13 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="change"><u>Change</u></string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="related_products"><i>Related Products</i></string>
 
+    <string name="delete_my_account"><u>Delete my account</u></string>
     <string name="email">Email Id</string>
     <string name="passowrd">Password</string>
     <string name="stores">STORE NAME</string>

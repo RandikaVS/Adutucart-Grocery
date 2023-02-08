@@ -26,7 +26,7 @@ public class MyTextViewInterBold extends androidx.appcompat.widget.AppCompatText
 
     private void init() {
         if (!isInEditMode()) {
-          Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Inter-Bold.ttf");
+          Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Inter-Bold.otf");
           setTypeface(tf);
         }
     }

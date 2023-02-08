@@ -1,5 +1,6 @@
 package com.example.adutucart5.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -71,17 +72,17 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
 
         final Product product = productList.get(position);
         localStorage = new LocalStorage(context);
         gson = new Gson();
         cartList = ((BaseActivity) context).getCartList();
         holder.title.setText(product.getTitle());
-        holder.offer.setText(product.getDiscount());
+        holder.offer.setText(String.valueOf(product.getDiscount()));
         holder.attribute.setText(product.getAttribute());
         holder.currency.setText(product.getCurrency());
-        holder.price.setText(product.getPrice());
+        holder.price.setText(String.valueOf(product.getPrice()));
         Picasso.get()
                 .load(product.getImage())
                 .into(holder.imageView, new Callback() {
@@ -97,7 +98,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
                 });
 
 
-        if (product.getDiscount() == null || product.getDiscount().length() == 0) {
+        if (String.valueOf(product.getDiscount()) == null || String.valueOf(product.getDiscount()).length() == 0) {
             holder.offer.setVisibility(View.GONE);
         }
 
@@ -108,7 +109,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
                     holder.subTotal.setVisibility(View.VISIBLE);
                     holder.quantity.setText(cartList.get(i).getQuantity());
                     _quantity = cartList.get(i).getQuantity();
-                    _price = product.getPrice();
+                    _price = String.valueOf(product.getPrice());
                     _subtotal = String.valueOf(Double.parseDouble(_price) * Integer.parseInt(_quantity));
                     holder.subTotal.setText(_quantity + "X" + _price + "= Php." + _subtotal);
                     Log.d("Tag : ", cartList.get(i).getId() + "-->" + product.getId());
@@ -195,7 +196,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
                 holder.subTotal.setVisibility(View.VISIBLE);
 
 
-                _price = product.getPrice();
+                _price = String.valueOf(product.getPrice());
                 _quantity = holder.quantity.getText().toString();
                 _attribute = product.getAttribute();
 

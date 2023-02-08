@@ -8,15 +8,40 @@ public class User {
     String mobile;
     String password;
 
+    String status;
+
+    String idImage;
+
+
     public User() {
     }
 
-    public User(String id, String name, String email, String mobile, String password) {
-        this.id = id;
+    public User(String name, String email, String mobile, String password,String idImage) {
+
         this.name = name;
         this.email = email;
         this.mobile = mobile;
         this.password = password;
+        this.idImage = idImage;
+        this.status = "0";
+
+    }
+
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getIdImage() {
+        return idImage;
+    }
+
+    public void setIdImage(String idImage) {
+        this.idImage = idImage;
     }
 
     public String getId() {

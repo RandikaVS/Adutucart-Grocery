@@ -1,6 +1,7 @@
 package com.example.adutucart5.Database;
 
 import com.example.adutucart5.model.Admin;
+import com.example.adutucart5.model.User;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,6 +42,18 @@ public class AdminDb {
     }
 
     public Task<Void> adminDelete(String key){
+        return databaseReference.child(key).removeValue();
+    }
+
+    public  Task<Void> ApproveUser(String key, HashMap<String,Object> hashMap){
+        FirebaseDatabase userDb = FirebaseDatabase.getInstance();
+        databaseReference = userDb.getReference(User.class.getSimpleName());
+        return databaseReference.child(key).updateChildren(hashMap);
+    }
+
+    public Task<Void> deleteUser(String key){
+        FirebaseDatabase userDb = FirebaseDatabase.getInstance();
+        databaseReference = userDb.getReference(User.class.getSimpleName());
         return databaseReference.child(key).removeValue();
     }
 }

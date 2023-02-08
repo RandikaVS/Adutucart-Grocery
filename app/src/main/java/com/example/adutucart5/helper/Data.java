@@ -1,5 +1,6 @@
 package com.example.adutucart5.helper;
 
+import com.example.adutucart5.R;
 import com.example.adutucart5.model.Offer;
 import com.example.adutucart5.model.Product;
 import com.example.adutucart5.model.Category;
@@ -33,13 +34,13 @@ public class Data {
         return categoryList;
     }
 
-//    public void addProductList(Product product){
-//        productList.add(product);
-//    }
-//
-//    public List<Product> getAllProductList(){
-//        return productList;
-//    }
+    public void addProductList(Product product){
+        productList.add(product);
+    }
+
+    public List<Product> getAllProductList(){
+        return productList;
+    }
 
     public List<Product> getProductList() {
         Product product = new Product("1", "1", "Apple", "", "1 Kg", "Php.", "20", "10% OFF", "https://storage.googleapis.com/zopnow-static/images/products/320/fresh-apple-red-delicious-v-500-g.png");
@@ -124,11 +125,11 @@ public class Data {
 
     public List<Stores> getStoreList(){
 
-        Stores stores = new Stores("https://i.imgur.com/8HG1ryC.jpg");
+        Stores stores = new Stores(R.drawable.sm,"SM");
         storesList.add(stores);
-        stores  = new Stores("https://i.imgur.com/8HG1ryC.jpg");
+        stores  = new Stores(R.drawable.supermarket_456,"Super Market 456");
         storesList.add(stores);
-        stores  = new Stores("https://i.imgur.com/8HG1ryC.jpg");
+        stores  = new Stores(R.drawable.robinson,"Robinson");
         storesList.add(stores);
 
         return storesList;
