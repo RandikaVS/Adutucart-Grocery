@@ -18,8 +18,7 @@ import android.widget.Toast;
 
 import com.example.adutucart5.Database.AdminDb;
 import com.example.adutucart5.R;
-import com.example.adutucart5.activity.MainActivity;
-import com.example.adutucart5.model.Admin;
+import com.example.adutucart5.adminActivity.AdminDashboard;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -90,8 +89,9 @@ public class LoginOperatorActivity extends AppCompatActivity {
                                 editor.apply();
                                 Toast.makeText(LoginOperatorActivity.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
                                 setLoading(false);
-                                Intent intent = new Intent(LoginOperatorActivity.this, MainActivity.class);
+                                Intent intent = new Intent(LoginOperatorActivity.this, AdminDashboard.class);
                                 startActivity(intent);
+                                finish();
                             }
                             else{
                                 setLoading(false);

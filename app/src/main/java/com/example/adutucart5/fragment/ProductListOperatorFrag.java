@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
@@ -54,6 +55,9 @@ public class ProductListOperatorFrag extends Fragment {
         delete = view.findViewById(R.id.delete_btn);
         update = view.findViewById(R.id.update_button);
 
+//        Bundle arguments = getArguments();
+//        String desired_string = arguments.getString("store_name");
+//        Toast.makeText(getContext(),desired_string,Toast.LENGTH_LONG).show();
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,5 +1,6 @@
 package com.example.adutucart5.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -69,7 +70,7 @@ public class PopularProductAdapter extends RecyclerView.Adapter<PopularProductAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
 
         final Product product = productList.get(position);
         localStorage = new LocalStorage(context);
@@ -77,7 +78,7 @@ public class PopularProductAdapter extends RecyclerView.Adapter<PopularProductAd
         cartList = ((BaseActivity) context).getCartList();
 
         holder.title.setText(product.getTitle());
-        holder.price.setText(product.getPrice());
+        holder.price.setText(String.valueOf(product.getPrice()));
         holder.attribute.setText(product.getAttribute());
         Picasso.get().load(product.getImage()).error(R.drawable.no_image).into(holder.imageView, new Callback() {
             @Override
@@ -109,7 +110,7 @@ public class PopularProductAdapter extends RecyclerView.Adapter<PopularProductAd
             public void onClick(View v) {
                 holder.shopNow.setVisibility(View.GONE);
                 holder.quantity_ll.setVisibility(View.VISIBLE);
-                _price = product.getPrice();
+                _price = String.valueOf(product.getPrice());
                 holder.currency.setText(product.getCurrency());
                 _quantity = holder.quantity.getText().toString();
                 _attribute = product.getAttribute();

@@ -61,6 +61,7 @@
                 android:orientation="vertical">
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/user_image"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
@@ -68,21 +69,33 @@
                     android:src="@drawable/no_image"
                     app:civ_border_color="@color/gray_btn_bg_color"
                     app:civ_border_width="2dp" />
+                <TextView
+                    android:id="@+id/image_change_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/change"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center"/>
+
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="20dp"
                     android:orientation="horizontal">
 
                     <com.example.adutucart5.customfonts.MyTextViewInterBold
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="18sp"
                         android:text="Name :" />
 
-                    <com.example.adutucart5.customfonts.MyTextViewInterRegular
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/user_profile_name"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="15sp"
                         android:layout_marginLeft="10dp"
                         android:text="Santosh Kumar Dash" />
                 </LinearLayout>
@@ -95,18 +108,21 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="20dp"
                     android:orientation="horizontal">
 
                     <com.example.adutucart5.customfonts.MyTextViewInterBold
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="18sp"
                         android:text="Email :" />
 
                     <com.example.adutucart5.customfonts.MyTextViewInterRegular
                         android:layout_width="wrap_content"
+                        android:id="@+id/user_profile_email"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
+                        android:textSize="15sp"
                         android:text="santoshnet2016@gmail.com" />
                 </LinearLayout>
 
@@ -118,18 +134,22 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="20dp"
                     android:orientation="horizontal">
 
                     <com.example.adutucart5.customfonts.MyTextViewInterBold
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="18sp"
                         android:text="Mobile :" />
 
-                    <com.example.adutucart5.customfonts.MyTextViewInterRegular
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id="@+id/user_profile_mobile"
+                        android:inputType="phone"
                         android:layout_marginLeft="10dp"
+                        android:textSize="15sp"
                         android:text="9778178337" />
                 </LinearLayout>
 
@@ -141,18 +161,21 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="20dp"
                     android:orientation="horizontal">
 
                     <com.example.adutucart5.customfonts.MyTextViewInterBold
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="18sp"
                         android:text="Address :" />
 
-                    <com.example.adutucart5.customfonts.MyTextViewInterRegular
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/user_profile_address"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
+                        android:textSize="15sp"
                         android:text="Banglore" />
                 </LinearLayout>
 
@@ -160,6 +183,31 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/cardBorderColor" />
+
+                <ProgressBar
+                    android:id="@+id/user_profile_progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:id="@+id/update_account_btn"
+                    android:layout_gravity="center"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:text="Update"
+                    android:textSize="18dp"
+                    android:layout_marginTop="50dp"
+                    android:background="@color/green_light"/>
+
+                <TextView
+                    android:id="@+id/delete_account"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="right"
+                    android:paddingRight="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/delete_my_account"/>
 
             </LinearLayout>
         </RelativeLayout>

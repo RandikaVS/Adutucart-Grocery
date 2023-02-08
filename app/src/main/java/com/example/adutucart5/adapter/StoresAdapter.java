@@ -4,6 +4,8 @@ import static android.app.PendingIntent.getActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +21,11 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.adutucart5.R;
+import com.example.adutucart5.activity.StoreProducts;
 import com.example.adutucart5.fragment.ConfirmFragment;
 import com.example.adutucart5.fragment.ProductListOperatorFrag;
 import com.example.adutucart5.fragment.StoresList;
+import com.example.adutucart5.loginRegister.LoginOperatorActivity;
 import com.example.adutucart5.model.Stores;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -59,23 +63,33 @@ public class StoresAdapter extends RecyclerView.Adapter<StoresAdapter.Viewholder
 
                 switch (position) {
                     case 0:
-                        AppCompatActivity appCompatActivity = (AppCompatActivity) v.getContext();
-                        FragmentTransaction ft = appCompatActivity.getSupportFragmentManager().beginTransaction();
-                        ft.setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left);
-                        ft.replace(R.id.content_frame, new ProductListOperatorFrag());
-                        ft.commit();
+                        Intent intent1 = new Intent(context, StoreProducts.class);
+                        intent1.putExtra("store_name",storesArrayList.get(position).getStore_name());
+                        context.startActivity(intent1);
+//                        AppCompatActivity appCompatActivity = (AppCompatActivity) v.getContext();
+//                        FragmentTransaction ft = appCompatActivity.getSupportFragmentManager().beginTransaction();
+//                        ft.setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left);
+//                        ft.replace(R.id.content_frame, new ProductListOperatorFrag());
+//                        ft.commit();
                         break;
-                    case 1:{
-                        Toast.makeText(context,
-                                "Constraint clicked", Toast.LENGTH_SHORT).show();
-                    }
+                    case 1:
 
+                        Intent intent2 = new Intent(context, StoreProducts.class);
+                        intent2.putExtra("store_name","SuperMarket456");
+                        context.startActivity(intent2);
+                        break;
+                    case 2:
+                        Intent intent3 = new Intent(context, StoreProducts.class);
+                        intent3.putExtra("store_name","Robinson");
+                        context.startActivity(intent3);
+                        break;
                 }
 
             }
         });
 
 
+        holder.store_name.setText(stores.getStore_name());
         Picasso.get().load(stores.getImage()).error(R.drawable.no_image).into(holder.store_image, new Callback() {
             @Override
             public void onSuccess() {
@@ -84,7 +98,6 @@ public class StoresAdapter extends RecyclerView.Adapter<StoresAdapter.Viewholder
 
             @Override
             public void onError(Exception e) {
-
             }
         });
     }

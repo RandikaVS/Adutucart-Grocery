@@ -37,6 +37,72 @@
             android:fontFamily="@font/nova_square"
             />
 
+        <LinearLayout
+            android:id="@+id/user_selected_imageLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                >
+
+                <ImageView
+                    android:layout_marginLeft="40dp"
+                    android:id="@+id/user_selected_image"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_gravity="center"
+                    />
+
+                <ImageView
+                    android:id="@+id/user_cancelImage"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="-105dp"
+                    android:background="@drawable/cancel_button"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/user_login_profile_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:background="@drawable/add_photo"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#954411"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="5dp"
+            >
+
+            <EditText
+                android:id="@+id/user_name"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:backgroundTint="@android:color/transparent"
+                android:fontFamily="@font/nova_square"
+                android:hint="Name"
+                android:inputType="textEmailAddress"
+                android:textColor="#FFF3E0"
+                android:textColorHint="#FFF3E0"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -75,35 +141,14 @@
                 android:layout_centerInParent="true"
                 android:backgroundTint="@android:color/transparent"
                 android:fontFamily="@font/nova_square"
-                android:inputType="textPassword"
 
                 android:hint="PASSWORD"
+                android:inputType="textPassword"
                 android:textColor="#FFF3E0"
                 android:textColorHint="#FFF3E0"
                 android:textSize="20sp" />
         </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#954411"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="15dp"
-            >
 
-            <EditText
-                android:id="@+id/name_editText"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_centerInParent="true"
-                android:backgroundTint="@android:color/transparent"
-                android:fontFamily="@font/nova_square"
-                android:inputType="textPersonName"
-                android:hint="NAME"
-                android:textColor="#FFF3E0"
-                android:textColorHint="#FFF3E0"
-                android:textSize="20sp" />
-        </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -120,34 +165,19 @@
                 android:layout_centerInParent="true"
                 android:backgroundTint="@android:color/transparent"
                 android:fontFamily="@font/nova_square"
-                android:inputType="phone"
                 android:hint="CELLPHONE NO."
+                android:inputType="phone"
                 android:textColor="#FFF3E0"
                 android:textColorHint="#FFF3E0"
                 android:textSize="20sp" />
         </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#954411"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="15dp"
-            >
 
-            <EditText
-                android:id="@+id/proof_editText"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_centerInParent="true"
-                android:backgroundTint="@android:color/transparent"
-                android:fontFamily="@font/nova_square"
-                android:hint="@string/proof_of_valid_id_for_verification"
-                android:inputType="textNoSuggestions"
-                android:textColor="#FFF3E0"
-                android:textColorHint="#FFF3E0"
-                android:textSize="13sp" />
-        </RelativeLayout>
+        <ProgressBar
+            android:id="@+id/user_reg_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
 
         <Button
             android:id="@+id/registerBtn"

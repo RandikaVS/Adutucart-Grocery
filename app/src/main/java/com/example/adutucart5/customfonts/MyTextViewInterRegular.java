@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.widget.TextView;
  
 
-public class MyTextViewInterRegular extends TextView {
+public class MyTextViewInterRegular extends androidx.appcompat.widget.AppCompatTextView {
 
     public MyTextViewInterRegular(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
@@ -25,7 +25,7 @@ public class MyTextViewInterRegular extends TextView {
 
     private void init() {
         if (!isInEditMode()) {
-            Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Inter-Regular.ttf");
+            Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Inter-Regular.otf");
             setTypeface(tf);
         }
     }

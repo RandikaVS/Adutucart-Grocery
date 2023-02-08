@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".adminActivity.AdminDashboard">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/desktop_icon2"
+                    android:layout_marginRight="100dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+      />
+                    <Button
+                        android:id="@+id/dashboard_btn"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:text="Dashboard"
+                        android:background="@color/color_spicy"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                <ImageView
+                    android:layout_marginTop="30dp"
+                    android:layout_width="90dp"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/tablet"/>
+                    <Button
+                        android:id="@+id/store_btn"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:text="Edit Store"
+                        android:background="@color/color_spicy"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Customer registration requests"
+                    android:textSize = "20dp"
+                    android:textStyle="bold">
+
+                </TextView>
+
+
+                <TableRow android:background="@color/color_spicy" android:padding="15dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:text="Email" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="50dp"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:text="Id picture" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="50dp"
+                        android:textStyle="bold"
+                        android:text="Action" />
+
+                </TableRow>
+            </TableLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/customer_request_table_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:background="#D6EEEE" />
+
+            <Button
+                android:id="@+id/logout_btn"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="LogOut"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/color_spicy"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
