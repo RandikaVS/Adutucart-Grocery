@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ public class LoginOperatorActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private EditText Email,Password;
     private TextView LoginText;
+    private ImageView Back;
 
     SharedPreferences sharedpreferences;
     @SuppressLint("MissingInflatedId")
@@ -36,12 +38,21 @@ public class LoginOperatorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_operator);
+        getSupportActionBar().hide();
 
         LoginBtn = findViewById(R.id.loginOperator);
         progressBar = findViewById(R.id.progressBar);
         Email = findViewById(R.id.email_editText);
         Password = findViewById(R.id.password_editText);
         LoginText = findViewById(R.id.textView2);
+        Back = findViewById(R.id.back_arrow_admin_login);
+
+        Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginOperatorActivity.this,EmailLoginActivity.class));
+            }
+        });
 
         AdminDb adminDb = new AdminDb();
 

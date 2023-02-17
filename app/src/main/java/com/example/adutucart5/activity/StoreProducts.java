@@ -1,18 +1,25 @@
 package com.example.adutucart5.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.adutucart5.R;
 import com.example.adutucart5.adapter.CustomerProductViewAdapter;
 import com.example.adutucart5.adminActivity.WrapContentLinearLayoutManager;
+import com.example.adutucart5.fragment.StoresList;
 import com.example.adutucart5.model.Product2;
+import com.example.adutucart5.model.Stores;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -25,6 +32,7 @@ public class StoreProducts extends AppCompatActivity {
     private RecyclerView ProductRecyclerView;
     private TextView StoreName;
     private CircleImageView StoreImage;
+    private ImageView BackBtn;
 
     CustomerProductViewAdapter customerProductViewAdapter;
     private DatabaseReference databaseReference;
@@ -32,6 +40,7 @@ public class StoreProducts extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_products);
+        getSupportActionBar().hide();
 
         Bundle extra = getIntent().getExtras();
         if (extra != null) {
@@ -41,6 +50,18 @@ public class StoreProducts extends AppCompatActivity {
         ProductRecyclerView=findViewById(R.id.user_store_product_list);
         StoreName = findViewById(R.id.user_store_name);
         StoreImage = findViewById(R.id.user_store_image);
+        BackBtn = findViewById(R.id.edit_store_back_btn);
+
+        BackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                getSupportFragmentManager().beginTransaction()
+//                        .add(android.R.id.content, new StoresList()).commit();
+                startActivity(new Intent(StoreProducts.this,MainActivity.class));
+
+
+            }
+        });
 
         setStoreDetails(key);
 
@@ -86,15 +107,19 @@ public class StoreProducts extends AppCompatActivity {
     private void setStoreDetails(String key){
         if(key.equals("SM")){
             StoreName.setText("SM Store");
-            StoreImage.setImageResource(R.drawable.sm);
+            StoreImage.setImageResource(R.drawable.sm_new);
         }
-        if(key.equals("SuperMarket456")){
-            StoreName.setText("Super Market 456");
-            StoreImage.setImageResource(R.drawable.supermarket_456);
+        if(key.equals("VictoriaSupermarket")){
+            StoreName.setText("Victoria Supermarket");
+            StoreImage.setImageResource(R.drawable.victoria_supermarket);
         }
         else if(key.equals("Robinson")){
             StoreName.setText("Robinson Store");
-            StoreImage.setImageResource(R.drawable.robinson);
+            StoreImage.setImageResource(R.drawable.robinsons_new);
+        }
+        else if(key.equals("MarketPlace")){
+            StoreName.setText("Market Place");
+            StoreImage.setImageResource(R.drawable.no_image);
         }
     }
 }

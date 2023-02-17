@@ -194,7 +194,7 @@ public class CartActivity extends BaseActivity {
                         Address.requestFocus();
                     }
                     else {
-                        cartAdapter2.CheckOutCart(Double.parseDouble(totalPrice.getText().toString()), Address.getText().toString(), radioButton.getText().toString());
+                        cartAdapter2.CheckOutCart(totalPrice.getText().toString(), Address.getText().toString(), radioButton.getText().toString());
                     }
                 }
 

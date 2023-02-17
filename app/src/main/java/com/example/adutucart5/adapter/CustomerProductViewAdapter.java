@@ -46,7 +46,7 @@ public class CustomerProductViewAdapter extends FirebaseRecyclerAdapter<Product2
         holder.ProductPrice.setText(String.valueOf(model.getPrice()));
         Glide.with(holder.itemView).load(model.getImage()).into(holder.ProductImage);
         AddCart = holder.AddToCart;
-        ImageUrl = model.getImage();
+
 
         holder.ProductCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,11 +108,11 @@ public class CustomerProductViewAdapter extends FirebaseRecyclerAdapter<Product2
                 else{
                     qty = holder.ProductQty.getText().toString();
                     SubTotal = String.valueOf(Integer.parseInt(holder.ProductQty.getText().toString()) * Integer.parseInt(holder.ProductPrice.getText().toString()));
-                    addCart(holder.Name.getText().toString(),qty,holder.ProductPrice.getText().toString(),SubTotal,getRef(position).getKey(),view.getContext());
+                    addCart(holder.Name.getText().toString(),qty,holder.ProductPrice.getText().toString(),SubTotal,getRef(position).getKey(),view.getContext(),getItem(position).getImage());
                 }
 
 
-                Toast.makeText(view.getContext(), "Product added to card",Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -150,9 +150,9 @@ public class CustomerProductViewAdapter extends FirebaseRecyclerAdapter<Product2
     }
 
 
-    private void addCart(String title,String qty,String price,String sub,String pid,Context context){
+    private void addCart(String title,String qty,String price,String sub,String pid,Context context,String image){
         CartDb cartDb = new CartDb();
-        Cart2 cart2 = new Cart2(ImageUrl,title,qty,sub,pid,price);
+        Cart2 cart2 = new Cart2(image,title,qty,sub,pid,price);
         cartDb.addCart(cart2).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

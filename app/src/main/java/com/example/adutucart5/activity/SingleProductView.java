@@ -34,7 +34,7 @@ public class SingleProductView extends AppCompatActivity {
     private String storeKey,productKey,ImageUrl,SubTotal;
     private DatabaseReference ProductRef;
 
-    private ImageView ProductImage,Add,Remove;
+    private ImageView ProductImage,Add,Remove,BackBtn;
     private TextView Title,Qty,Description,Price;
     private ProgressBar ProgressBar;
     private Button AddCartBtn;
@@ -45,6 +45,7 @@ public class SingleProductView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_product_view);
+        getSupportActionBar().hide();
 
         ProductImage = findViewById(R.id.product_image);
         Add = findViewById(R.id.product_add_btn);
@@ -56,6 +57,7 @@ public class SingleProductView extends AppCompatActivity {
         Price  = findViewById(R.id.product_price);
         ProgressBar = findViewById(R.id.add_cart_progress);
         recyclerView = findViewById(R.id.related_product_recyclerview);
+        BackBtn = findViewById(R.id.single_product_back_btn);
 
 //        pAdapter = new PopularProductAdapter(data.getPopularList(), this, "Home");
 //        RecyclerView.LayoutManager pLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -70,12 +72,28 @@ public class SingleProductView extends AppCompatActivity {
             storeKey = extra.getString("store_key");
             getProductDetails(productKey,storeKey);
         }
+        BackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(extra.getString("Home")!=null){
+                    Intent intent = new Intent(SingleProductView.this, MainActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(SingleProductView.this, StoreProducts.class);
+                    intent.putExtra("store_name", storeKey);
+                    startActivity(intent);
+                }
+            }
+        });
 
         AddCartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setLoading(true);
                 if(Qty.getText().toString().isEmpty()){
+                    setLoading(false);
                     Toast.makeText(SingleProductView.this,"Quantity must greater than 0",Toast.LENGTH_SHORT).show();
                 }else {
                     SubTotal = String.valueOf(Integer.parseInt(Qty.getText().toString()) * Integer.parseInt(Price.getText().toString()));

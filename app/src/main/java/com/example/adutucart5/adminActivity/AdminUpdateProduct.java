@@ -54,6 +54,7 @@ public class AdminUpdateProduct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_update_product);
+        getSupportActionBar().hide();
 
         ProductImage = findViewById(R.id.update_product_image);
         Title = findViewById(R.id.update_product_title);

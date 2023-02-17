@@ -215,8 +215,8 @@
             android:id="@+id/after_order_animation"
             android:layout_width="match_parent"
             android:layout_height="450dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="80dp"
             android:src="@drawable/order_last_animation"
             android:visibility="visible" />
 
@@ -224,7 +224,8 @@
             android:layout_width="300dp"
             android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:translationZ="90dp"
+            android:layout_marginTop="-150dp"
             android:background="@drawable/rounded_corner"
             android:orientation="vertical">
 

@@ -9,7 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -19,13 +21,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.adutucart5.adapter.CategoryAdapter;
+import com.example.adutucart5.adapter.CustomerRequestViewAdapter;
+import com.example.adutucart5.adapter.HomeProductAdapter;
 import com.example.adutucart5.adapter.HomeSliderAdapter;
 import com.example.adutucart5.adapter.NewProductAdapter;
 import com.example.adutucart5.adapter.PopularProductAdapter;
+import com.example.adutucart5.adminActivity.WrapContentLinearLayoutManager;
 import com.example.adutucart5.helper.Data;
 import com.example.adutucart5.R;
 import com.example.adutucart5.activity.MainActivity;
 import com.example.adutucart5.model.Category;
+import com.example.adutucart5.model.CustomerOrderList;
+import com.example.adutucart5.model.Product2;
+import com.example.adutucart5.model.User;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,10 +60,12 @@ public class HomeFragment extends Fragment {
     private int dotscount;
     private ImageView[] dots;
     private List<Category> categoryList = new ArrayList<>();
-    private RecyclerView recyclerView, nRecyclerView, pRecyclerView;
+    private RecyclerView robinsonRecyclerView, smRecyclerView, victoriaRecyclerView,marketplaceRecyclerView;
     private CategoryAdapter mAdapter;
-    private NewProductAdapter nAdapter;
+    private HomeProductAdapter homeProductAdapter,homeProductAdapter2,homeProductAdapter3,homeProductAdapter4;
     private PopularProductAdapter pAdapter;
+
+    private DatabaseReference databaseReference;
     private Integer[] images = {R.drawable.slider1, R.drawable.slider2, R.drawable.slider3, R.drawable.slider4, R.drawable.slider5};
 
     public HomeFragment() {
@@ -59,30 +76,98 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         data = new Data();
-        recyclerView = view.findViewById(R.id.category_rv);
-        pRecyclerView = view.findViewById(R.id.popular_product_rv);
-        nRecyclerView = view.findViewById(R.id.new_product_rv);
+        smRecyclerView = view.findViewById(R.id.sm_product_rv);
+        robinsonRecyclerView = view.findViewById(R.id.robinson_product_rv);
+        victoriaRecyclerView = view.findViewById(R.id.victoria_supermarket_product_rv);
+        marketplaceRecyclerView = view.findViewById(R.id.marketplace_product_rv);
 
-        mAdapter = new CategoryAdapter(data.getCategoryList(), getContext(), "Home");
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
+        databaseReference = FirebaseDatabase.getInstance().getReference("Stores");
 
-        nAdapter = new NewProductAdapter(data.getNewList(), getContext(), "Home");
-        RecyclerView.LayoutManager nLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        nRecyclerView.setLayoutManager(nLayoutManager);
-        nRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        nRecyclerView.setAdapter(nAdapter);
+//        mAdapter = new CategoryAdapter(data.getCategoryList(), getContext(), "Home");
+//        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+//        recyclerView.setLayoutManager(mLayoutManager);
+//        recyclerView.setItemAnimator(new DefaultItemAnimator());
+//        recyclerView.setAdapter(mAdapter);
 
-        pAdapter = new PopularProductAdapter(data.getPopularList(), getContext(), "Home");
-        RecyclerView.LayoutManager pLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        pRecyclerView.setLayoutManager(pLayoutManager);
-        pRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        pRecyclerView.setAdapter(pAdapter);
+
+        smRecyclerView.setLayoutManager(new WrapContentLinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        robinsonRecyclerView.setLayoutManager(new WrapContentLinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        victoriaRecyclerView.setLayoutManager(new WrapContentLinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        marketplaceRecyclerView.setLayoutManager(new WrapContentLinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+
+
+
+//
+        Query query = databaseReference.child("SM");
+
+
+        // It is a class provide by the FirebaseUI to make a
+        // query in the database to fetch appropriate data
+        FirebaseRecyclerOptions<Product2> options
+                = new FirebaseRecyclerOptions.Builder<Product2>()
+                .setQuery(query, Product2.class)
+                .build();
+
+        // Connecting object of required Adapter class to
+        // the Adapter class itself
+        homeProductAdapter = new HomeProductAdapter(options,getContext(),"Home","SM");
+        // Connecting Adapter class with the Recycler view*/
+        smRecyclerView.setAdapter(homeProductAdapter);
+
+
+        Query query2 = databaseReference.child("VictoriaSupermarket");
+
+
+        // It is a class provide by the FirebaseUI to make a
+        // query in the database to fetch appropriate data
+        FirebaseRecyclerOptions<Product2> options2
+                = new FirebaseRecyclerOptions.Builder<Product2>()
+                .setQuery(query2, Product2.class)
+                .build();
+
+        // Connecting object of required Adapter class to
+        // the Adapter class itself
+        homeProductAdapter2 = new HomeProductAdapter(options2,getContext(),"Home","VictoriaSupermarket");
+        // Connecting Adapter class with the Recycler view*/
+        robinsonRecyclerView.setAdapter(homeProductAdapter2);
+
+        Query query3 = databaseReference.child("Robinson");
+
+
+        // It is a class provide by the FirebaseUI to make a
+        // query in the database to fetch appropriate data
+        FirebaseRecyclerOptions<Product2> options3
+                = new FirebaseRecyclerOptions.Builder<Product2>()
+                .setQuery(query3, Product2.class)
+                .build();
+
+        // Connecting object of required Adapter class to
+        // the Adapter class itself
+        homeProductAdapter3 = new HomeProductAdapter(options2,getContext(),"Home","Robinson");
+        // Connecting Adapter class with the Recycler view*/
+        victoriaRecyclerView.setAdapter(homeProductAdapter3);
+
+        Query query4 = databaseReference.child("MarketPlace");
+
+
+        // It is a class provide by the FirebaseUI to make a
+        // query in the database to fetch appropriate data
+        FirebaseRecyclerOptions<Product2> options4
+                = new FirebaseRecyclerOptions.Builder<Product2>()
+                .setQuery(query4, Product2.class)
+                .build();
+
+        // Connecting object of required Adapter class to
+        // the Adapter class itself
+        homeProductAdapter4 = new HomeProductAdapter(options4,getContext(),"Home","MarketPlace");
+        // Connecting Adapter class with the Recycler view*/
+        marketplaceRecyclerView.setAdapter(homeProductAdapter4);
+
+
+
+
 
 
         timer = new Timer();
@@ -139,6 +224,18 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        homeProductAdapter.startListening();
+        homeProductAdapter2.startListening();
+        homeProductAdapter3.startListening();
+        homeProductAdapter4.startListening();
+    }
+
+
+
+
 
     public void scheduleSlider() {
 
@@ -167,6 +264,10 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStop() {
         timer.cancel();
+        homeProductAdapter.stopListening();
+        homeProductAdapter2.stopListening();
+        homeProductAdapter3.startListening();
+        homeProductAdapter4.startListening();
         super.onStop();
     }
 
@@ -187,3 +288,5 @@ public class HomeFragment extends Fragment {
         getActivity().setTitle("Home");
     }
 }
+
+

@@ -46,7 +46,7 @@ public class ProductViewActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_view);
-
+        getSupportActionBar().hide();
 
         Intent intent = getIntent();
 

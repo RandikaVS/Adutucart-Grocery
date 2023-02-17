@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/adutucart" />
+        app:srcCompat="@drawable/adutu_cart_image" />
 
     <LinearLayout
         android:layout_width="match_parent"

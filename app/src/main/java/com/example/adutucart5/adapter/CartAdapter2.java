@@ -25,6 +25,7 @@ import com.example.adutucart5.R;
 import com.example.adutucart5.activity.BaseActivity;
 import com.example.adutucart5.activity.CartActivity;
 import com.example.adutucart5.model.Cart2;
+import com.example.adutucart5.model.CustomerOrderList;
 import com.example.adutucart5.model.Order2;
 import com.example.adutucart5.model.Product2;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -36,7 +37,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -45,7 +48,7 @@ public class CartAdapter2 extends FirebaseRecyclerAdapter<Cart2, CartAdapter2.ta
     public FirebaseRecyclerOptions<Cart2> product2;
     private double total=0.00;
     Context context;
-    private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference,databaseReference2;
     private FirebaseAuth mAuth;
 
     public CartAdapter2(@NonNull FirebaseRecyclerOptions<Cart2> options,Context context) {
@@ -205,20 +208,28 @@ public class CartAdapter2 extends FirebaseRecyclerAdapter<Cart2, CartAdapter2.ta
         return total;
     }
 
-    public void CheckOutCart(double total,String address,String paymentType){
+    public void CheckOutCart(String total,String address,String paymentType){
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         mAuth=FirebaseAuth.getInstance();
         databaseReference = db.getReference("Orders").child(mAuth.getCurrentUser().getUid()).push();
+        databaseReference2 = databaseReference.child("items");
+
         HashMap<String,Object> hashMap = new HashMap<>();
         hashMap.put("subTotal",total);
         hashMap.put("address",address);
         hashMap.put("paymentType",paymentType);
+        hashMap.put("status","Pending");
         Task task = null;
+
+        List<Order2> order2ArrayList = new ArrayList<>();
         if(super.getItemCount()>0) {
             for (int i = 0; i < super.getItemCount(); i++) {
-                Order2 order2 = new Order2(super.getItem(i).getTitle(), super.getItem(i).getImage(), super.getItem(i).getQuantity()
+                Order2 order2 = new Order2(getRef(i).getKey(),super.getItem(i).getTitle(), super.getItem(i).getImage(), super.getItem(i).getQuantity()
                         , super.getItem(i).getUnitPrice(), super.getItem(i).getSubTotal());
-                databaseReference.child(super.getRef(i).getKey()).setValue(order2).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+                order2ArrayList.add(order2);
+            }
+                databaseReference2.setValue(order2ArrayList).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
@@ -233,7 +244,7 @@ public class CartAdapter2 extends FirebaseRecyclerAdapter<Cart2, CartAdapter2.ta
                     }
                 });
 
-            }
+
             databaseReference.updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
@@ -243,8 +254,8 @@ public class CartAdapter2 extends FirebaseRecyclerAdapter<Cart2, CartAdapter2.ta
                         databaseReference.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
+                                ((CartActivity) context).cartCleared();
                                 ((CartActivity) context).playAnimation();
-
                                 Toast.makeText(context, "Cart cleared", Toast.LENGTH_SHORT).show();
                             }
                         }).addOnFailureListener(new OnFailureListener() {

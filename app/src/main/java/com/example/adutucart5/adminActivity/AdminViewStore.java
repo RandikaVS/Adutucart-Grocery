@@ -37,6 +37,7 @@ public class AdminViewStore extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_view_store);
+        getSupportActionBar().hide();
 
         ProductRecyclerView=findViewById(R.id.admin_product_list);
         StoreName = findViewById(R.id.store_name);
@@ -60,15 +61,19 @@ public class AdminViewStore extends AppCompatActivity {
         myEdit.commit();
         if(key.equals("SM")){
             StoreName.setText("SM");
-            StoreImage.setImageResource(R.drawable.sm);
+            StoreImage.setImageResource(R.drawable.sm_new);
         }
         else if(key.equals("SuperMarket456")){
-            StoreName.setText("456 SuperMarket");
-            StoreImage.setImageResource(R.drawable.supermarket_456);
+            StoreName.setText("VictoriaSupermarket");
+            StoreImage.setImageResource(R.drawable.victoria_supermarket);
         }
         else if(key.equals("Robinson")){
             StoreName.setText("Robinson");
-            StoreImage.setImageResource(R.drawable.supermarket_456);
+            StoreImage.setImageResource(R.drawable.robinsons_new);
+        }
+        else if(key.equals("MarketPlace")){
+            StoreName.setText("Market Place");
+            StoreImage.setImageResource(R.drawable.no_image);
         }
 
         ProductRecyclerView.setLayoutManager(new WrapContentLinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
