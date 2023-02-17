@@ -14,7 +14,7 @@ public class Order2 {
 
     public  Order2(){}
 
-    public Order2(String productName, String productImage, String qty,String unitPrice
+    public Order2(String productId,String productName, String productImage, String qty,String unitPrice
     ,String total){
         this.productId = productId;
         this.productName = productName;

@@ -37,7 +37,7 @@ public class EmailRegistrationActivity extends AppCompatActivity {
 
     private Button RegisterAsAdminBtn,UserRegisterBtn;
     private EditText Name,Email,Phone,Password;
-    private ImageView idImage,SelectedImage,CancelImage;
+    private ImageView idImage,SelectedImage,CancelImage,Back;
     private Uri imageUri = null;
     private ProgressBar ProgressBar;
 
@@ -50,6 +50,7 @@ public class EmailRegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_registration);
+        getSupportActionBar().hide();
 
         RegisterAsAdminBtn = findViewById(R.id.registerOperator);
         Name = findViewById(R.id.user_name);
@@ -62,6 +63,14 @@ public class EmailRegistrationActivity extends AppCompatActivity {
         SelectedImage = findViewById(R.id.user_selected_image);
         SelectedImageLayout = findViewById(R.id.user_selected_imageLayout);
         CancelImage = findViewById(R.id.user_cancelImage);
+        Back = findViewById(R.id.back_arrow_register);
+
+        Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(EmailRegistrationActivity.this,LoginRegisterMainActivity.class));
+            }
+        });
 
         CancelImage.setOnClickListener(new View.OnClickListener() {
             @Override

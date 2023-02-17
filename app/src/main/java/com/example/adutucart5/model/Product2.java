@@ -1,16 +1,19 @@
 package com.example.adutucart5.model;
 
+import java.util.List;
+
 public class Product2 {
 
     String id;
     String title;
     String description;
-    String currency;
     String price;
     String discount;
     String image;
 
     String qty;
+
+    String productStore;
 
     public Product2() {
     }
@@ -23,6 +26,16 @@ public class Product2 {
         this.image = image;
         this.qty = qty;
     }
+
+    public void setProductStore(String productStore) {
+        this.productStore = productStore;
+    }
+
+    public String getProductStore() {
+        return productStore;
+    }
+
+
 
     public void setQty(String qty) {
         this.qty = qty;
@@ -84,11 +97,4 @@ public class Product2 {
         this.image = image;
     }
 
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
 }

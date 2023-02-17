@@ -89,6 +89,7 @@
             android:backgroundTint="@android:color/transparent"
             android:fontFamily="@font/nova_square"
             android:hint="PASSWORD"
+            android:inputType="textPassword"
             android:textColor="#FFF3E0"
             android:textColorHint="#FFF3E0"
             android:textSize="20sp" />

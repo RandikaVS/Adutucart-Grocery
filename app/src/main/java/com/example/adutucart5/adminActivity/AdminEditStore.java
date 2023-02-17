@@ -15,18 +15,20 @@ import com.example.adutucart5.R;
 public class AdminEditStore extends AppCompatActivity {
 
 
-    private CardView SM,SuperMarket456,Robinson;
+    private CardView SM,VictoriaSupermarket,Robinson,MarketPlace;
     private ImageView DashboardBackBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_edit_store);
+        getSupportActionBar().hide();
 
         SM = findViewById(R.id.sm_store);
-        SuperMarket456 = findViewById(R.id.super_market_456_store);
+        VictoriaSupermarket = findViewById(R.id.victoria_supermarket);
         Robinson = findViewById(R.id.robinson_store);
         DashboardBackBtn = findViewById(R.id.dashboard_back_btn);
+        MarketPlace = findViewById(R.id.marketplace_store);
 
         SharedPreferences preferences = getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
         preferences.edit().remove("store").commit();
@@ -49,10 +51,10 @@ public class AdminEditStore extends AppCompatActivity {
             }
         });
 
-        SuperMarket456.setOnClickListener(new View.OnClickListener() {
+        VictoriaSupermarket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String key = "SuperMarket456";
+                String key = "VictoriaSupermarket";
                 Intent intent = new Intent(AdminEditStore.this,AdminViewStore.class);
                 intent.putExtra("storeName",key);
                 startActivity(intent);
@@ -63,6 +65,16 @@ public class AdminEditStore extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String key = "Robinson";
+                Intent intent = new Intent(AdminEditStore.this,AdminViewStore.class);
+                intent.putExtra("storeName",key);
+                startActivity(intent);
+            }
+        });
+
+        MarketPlace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String key = "MarketPlace";
                 Intent intent = new Intent(AdminEditStore.this,AdminViewStore.class);
                 intent.putExtra("storeName",key);
                 startActivity(intent);

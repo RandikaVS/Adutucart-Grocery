@@ -1,7 +1,10 @@
 package com.example.adutucart5.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -11,9 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -22,7 +27,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 
+import com.bumptech.glide.Glide;
+import com.example.adutucart5.Database.UserDb;
 import com.example.adutucart5.fragment.StoresList;
+import com.example.adutucart5.loginRegister.LoginRegisterMainActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -41,11 +51,14 @@ import com.example.adutucart5.util.localstorage.LocalStorage;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static int cart_count = 0;
     User user;
+    SharedPreferences sharedpreferences;
 
     @SuppressLint("ResourceAsColor")
     static void centerToolbarTitle(@NonNull final Toolbar toolbar) {
@@ -147,23 +160,70 @@ public class MainActivity extends BaseActivity
         navigationView.setNavigationItemSelectedListener(this);
         View hView = navigationView.getHeaderView(0);
 
+        SharedPreferences sh = getSharedPreferences("user_shared_prefs", Context.MODE_PRIVATE);
+
         TextView nav_user = hView.findViewById(R.id.nav_header_name);
         LinearLayout nav_footer = findViewById(R.id.footer_text);
+        CircleImageView SideBarImage = hView.findViewById(R.id.side_bar_imageView);
+        TextView SideBarUserName = hView.findViewById(R.id.side_bar_user_name);
+
+        if(sh !=null){
+            String proImage = sh.getString("profile_image","");
+            Glide.with(this).load(proImage).placeholder(R.drawable.no_image).into(SideBarImage);
+            SideBarUserName.setText(sh.getString("user_name",""));
+        }
+
+
         if (user != null) {
             nav_user.setText(user.getName());
         }
+
         nav_footer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                localStorage.logoutUser();
-                startActivity(new Intent(getApplicationContext(), LoginRegisterActivity.class));
-                finish();
-                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
-                // Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_LONG).show();
+                showLogoutDialog();
+
             }
         });
 
         displaySelectedScreen(R.id.nav_home);
+    }
+
+    private void showLogoutDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+        // Set the message show for the Alert time
+        builder.setMessage("Do you want to logout ?");
+        builder.setIcon(R.drawable.warning);
+
+        // Set Alert Title
+        builder.setTitle("Alert !");
+
+        // Set Cancelable false for when the user clicks on the outside the Dialog Box then it will remain show
+        builder.setCancelable(false);
+
+        // Set the positive button with yes name Lambda OnClickListener method is use of DialogInterface interface.
+        builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
+            localStorage.logoutUser();
+            sharedpreferences = getSharedPreferences("user_shared_prefs", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.clear().commit();
+            startActivity(new Intent(MainActivity.this, LoginRegisterMainActivity.class));
+            finish();
+            overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+            dialog.dismiss();
+        });
+
+        // Set the Negative button with No name Lambda OnClickListener method is use of DialogInterface interface.
+        builder.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {
+            // If user click no then dialog box is canceled.
+            dialog.cancel();
+        });
+
+        // Create the Alert dialog
+        AlertDialog alertDialog = builder.create();
+        // Show the Alert Dialog box
+        alertDialog.show();
     }
 
     private void displaySelectedScreen(int itemId) {

@@ -94,15 +94,15 @@
 
                 </LinearLayout>
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/category_rv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </RelativeLayout>
+<!--                    <androidx.recyclerview.widget.RecyclerView-->
+<!--                        android:id="@+id/category_rv"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content" />-->
+<!--                </RelativeLayout>-->
 
 
                 <LinearLayout
@@ -125,30 +125,33 @@
                     </RelativeLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/new_product_rv"
+                        android:id="@+id/sm_product_rv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
                     </androidx.recyclerview.widget.RecyclerView>
 
-                    <RelativeLayout
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/robinson_product_rv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="5dp"
-                            android:text="Popular Products"
-                            android:textSize="20dp"
-                            android:textStyle="bold" />
-                    </RelativeLayout>
+                    </androidx.recyclerview.widget.RecyclerView>
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/popular_product_rv"
+                        android:id="@+id/victoria_supermarket_product_rv"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/marketplace_product_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
 
                 </LinearLayout>
 

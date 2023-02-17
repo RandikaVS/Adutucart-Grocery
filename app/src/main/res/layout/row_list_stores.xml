@@ -21,8 +21,8 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="376dp"
-            android:layout_height="98dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
             android:scaleType="centerCrop"
             android:src="@drawable/shop_demo"
             app:layout_constraintStart_toStartOf="parent"

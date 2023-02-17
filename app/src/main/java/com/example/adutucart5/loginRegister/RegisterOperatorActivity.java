@@ -47,7 +47,7 @@ public class RegisterOperatorActivity extends AppCompatActivity {
 
     private LinearLayout SelectedImageLayout;
 
-    private ImageView CancelImage;
+    private ImageView CancelImage,Back;
 
     private ProgressBar RegProgressBar;
 
@@ -62,6 +62,7 @@ public class RegisterOperatorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_operator);
+        getSupportActionBar().hide();
 
         Email = findViewById(R.id.email_editText);
         Password = findViewById(R.id.password_editText);
@@ -74,6 +75,14 @@ public class RegisterOperatorActivity extends AppCompatActivity {
         CancelImage = findViewById(R.id.cancelImage);
         RegProgressBar = findViewById(R.id.reg_progress_bar);
         RegisterText = findViewById(R.id.register_text);
+        Back = findViewById(R.id.back_arrow_admin_register);
+
+        Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RegisterOperatorActivity.this,EmailRegistrationActivity.class));
+            }
+        });
 
         ProfileImage.setOnClickListener(new View.OnClickListener() {
             @Override

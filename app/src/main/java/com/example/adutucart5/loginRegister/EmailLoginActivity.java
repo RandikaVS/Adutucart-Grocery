@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -38,11 +39,13 @@ public class EmailLoginActivity extends AppCompatActivity {
     private ProgressBar ProgressBar;
     SharedPreferences sharedpreferences;
     private DatabaseReference databaseReference;
+    private ImageView BackBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_login);
+        getSupportActionBar().hide();
 
         LoginAdminBtn = findViewById(R.id.loginOperator);
         Email = findViewById(R.id.user_login_email);
@@ -50,6 +53,14 @@ public class EmailLoginActivity extends AppCompatActivity {
         LoginBtn = findViewById(R.id.loginBtn);
         LoginText = findViewById(R.id.user_login_text);
         ProgressBar = findViewById(R.id.user_login_progress);
+        BackBtn = findViewById(R.id.back_arrow);
+
+        BackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(EmailLoginActivity.this,LoginRegisterMainActivity.class));
+            }
+        });
 
 
         UserDb userDb = new UserDb();
@@ -97,6 +108,8 @@ public class EmailLoginActivity extends AppCompatActivity {
                                             if(task.getResult().exists()){
                                                 DataSnapshot dataSnapshot = task.getResult();
                                                 String status = String.valueOf(dataSnapshot.child("status").getValue());
+                                                String profile_image = String.valueOf(dataSnapshot.child("idImage").getValue());
+                                                String userName = String.valueOf(dataSnapshot.child("name").getValue());
 
                                                 if(status.equals("0")){
                                                     setLoading(false);
@@ -108,6 +121,8 @@ public class EmailLoginActivity extends AppCompatActivity {
 
                                                     editor.putString("emailKey", email);
                                                     editor.putString("passwordKey", password);
+                                                    editor.putString("profile_image", profile_image);
+                                                    editor.putString("user_name", userName);
 
                                                     editor.apply();
                                                     Toast.makeText(EmailLoginActivity.this, "Logged in successfully", Toast.LENGTH_SHORT).show();

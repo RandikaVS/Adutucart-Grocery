@@ -96,13 +96,13 @@
                         android:layout_height="200dp"
                         android:layout_marginTop="20dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/sm"
+                        android:src="@drawable/sm_new"
                         android:contentDescription="@string/app_name" />
 
 
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/super_market_456_store"
+                    android:id="@+id/victoria_supermarket"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardElevation="10dp"
@@ -116,7 +116,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="456 SuperMarket"
+                        android:text="Victoria Supermarket"
                         android:layout_gravity="top"
                         android:layout_marginTop="5dp"
                         android:textColor="@color/black"
@@ -132,7 +132,7 @@
                         android:layout_height="200dp"
                         android:layout_marginTop="20dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/supermarket_456"
+                        android:src="@drawable/victoria_supermarket"
                         android:contentDescription="@string/app_name" />
 
 
@@ -167,12 +167,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/robinson"
+                        android:src="@drawable/robinsons_new"
                         android:layout_marginTop="20dp"
                         android:contentDescription="@string/app_name" />
 
                 </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/marketplace_store"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardElevation="10dp"
@@ -184,25 +186,29 @@
                     app:cardUseCompatPadding="true"
                     >
 
-                    <ImageView
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/store_icon"
-                        android:layout_margin="10dp"
-                        android:contentDescription="@string/app_name" />
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Other Store"
-                        android:layout_gravity="bottom|center_horizontal"
-                        android:layout_marginTop="20dp"
+                        android:text="Market Place"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_marginBottom="20dp"
+                        android:textColor="@color/black"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/market_place"
+                        android:layout_marginTop="20dp"
+                        android:contentDescription="@string/app_name" />
+
                 </androidx.cardview.widget.CardView>
+
 
 
 

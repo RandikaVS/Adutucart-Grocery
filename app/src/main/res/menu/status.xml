@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/step_1"
+        android:title="Pending" />
+
+    <item android:id="@+id/step_2"
+        android:title="Grocery" />
+
+    <item android:id="@+id/step_3"
+        android:title="On Delivery" />
+
+    <item android:id="@+id/step_4"
+        android:title="Completed" />
+
+</menu>

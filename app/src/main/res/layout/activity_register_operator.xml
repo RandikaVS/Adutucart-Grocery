@@ -14,7 +14,7 @@
         >
 
         <ImageView
-            android:id="@+id/back_arrow"
+            android:id="@+id/back_arrow_admin_register"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/back_arrow"

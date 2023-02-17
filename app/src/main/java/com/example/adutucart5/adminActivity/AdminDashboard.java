@@ -35,6 +35,7 @@ public class AdminDashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_dashboard);
+        getSupportActionBar().hide();
 
         CustomerRequestRecyclerView=findViewById(R.id.customer_request_table_recycler_view);
 
