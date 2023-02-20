@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.adutucart5.adapter.CustomerOrderListAdapter;
 import com.example.adutucart5.adminActivity.WrapContentLinearLayoutManager;
+import com.example.adutucart5.model.AdminOrderItemList;
 import com.example.adutucart5.model.CustomerOrderItemList;
 import com.example.adutucart5.model.CustomerOrderList;
 import com.google.firebase.auth.FirebaseAuth;
@@ -65,9 +66,70 @@ public class FirebaseRepo {
         });
     }
 
+    public void getAllOrderDataAdmin(){
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<CustomerOrderList> customerOrderLists = new ArrayList<>();
+
+                for(DataSnapshot ds :snapshot.getChildren()){
+
+                    databaseReference.child(ds.getKey()).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+
+                            for(DataSnapshot ds2 :snapshot.getChildren()){
+                                CustomerOrderList customerOrderList = new CustomerOrderList();
+                                customerOrderList.setAddress(ds2.child("address").getValue(String.class));
+
+                                GenericTypeIndicator<ArrayList<CustomerOrderItemList>> genericTypeIndicator =
+                                        new GenericTypeIndicator<ArrayList<CustomerOrderItemList>>() {};
+                                customerOrderList.setCustomerOrderItemList(ds2.child("items").getValue(genericTypeIndicator));
+
+                                customerOrderList.setPaymentType(ds2.child("paymentType").getValue(String.class));
+                                customerOrderList.setStatus(ds2.child("status").getValue(String.class));
+                                customerOrderList.setSubTotal(ds2.child("subTotal").getValue(String.class));
+                                customerOrderList.setKey((ds2.getKey()));
+                                customerOrderList.setParentKey(ds.getKey());
+
+
+                                customerOrderLists.add(customerOrderList);
+                                System.out.println("Order ===== "+customerOrderList);
+                            }
+                            System.out.println("order list ==="+customerOrderLists.size());
+                            onRealTimeDbTaskComplete.onSuccessAdmin(customerOrderLists);
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            onRealTimeDbTaskComplete.onFailure(error);
+                            throw  error.toException();
+                        }
+                    });
+
+                }
+
+                System.out.println("order list new1==="+customerOrderLists.size());
+
+
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                onRealTimeDbTaskComplete.onFailure(error);
+                throw  error.toException();
+            }
+        });
+
+    }
+
     public interface OnRealTimeDbTaskComplete{
 
         void onSuccess(List<CustomerOrderList> customerOrderLists);
+        void onSuccessAdmin(List<CustomerOrderList> customerOrderLists);
         void onFailure(DatabaseError error);
 
     }

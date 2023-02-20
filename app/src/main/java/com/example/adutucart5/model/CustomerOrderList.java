@@ -6,6 +6,7 @@ import java.util.List;
 
 public class CustomerOrderList {
 
+    private String userKey;
     private String key;
     private String status;
     private String address;
@@ -21,6 +22,14 @@ public class CustomerOrderList {
         this.paymentType = paymentType;
         this.customerOrderItemList = customerOrderItemList;
         this.subTotal = subTotal;
+    }
+
+    public void setParentKey(String userKey) {
+        this.userKey = userKey;
+    }
+
+    public String getParentKey() {
+        return userKey;
     }
 
     public String getSubTotal() {

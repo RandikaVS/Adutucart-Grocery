@@ -37,7 +37,7 @@
     <string name="proof_of_valid_id_for_verification">PROOF OF VALID ID FOR VERIFICATION</string>
     <string name="drivers_license_picture_for_verification">DRIVERS LICENSE PICTURE FOR VERIFICATION</string>
     <string name="company_id_for_verification">COMPANY ID FOR VERIFICATION</string>
-    
+
     <string name="pending">Pending</string>
     <string name="to_ship">ToShip</string>
     <string name="to_receive">ToReceive</string>

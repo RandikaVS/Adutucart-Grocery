@@ -127,11 +127,19 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Order Status"
                 android:padding="10dp"/>
+
+
+            </LinearLayout>
 
 
             <HorizontalScrollView
