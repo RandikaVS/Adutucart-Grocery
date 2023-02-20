@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".adminActivity.AdminViewOrders">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@color/color_spicy"
+        android:layout_height="50dp">
+        <ImageView
+            android:id="@+id/admin_view_orders_back_btn"
+            android:layout_width="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/back_icon"/>
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/admin_orders_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#D6EEEE" />
+
+</LinearLayout>

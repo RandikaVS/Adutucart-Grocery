@@ -16,6 +16,7 @@ import android.widget.Button;
 import com.example.adutucart5.R;
 import com.example.adutucart5.activity.SplashScreen;
 import com.example.adutucart5.adapter.CustomerRequestViewAdapter;
+import com.example.adutucart5.model.Order;
 import com.example.adutucart5.model.User;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
@@ -25,7 +26,7 @@ import com.google.firebase.database.Query;
 public class AdminDashboard extends AppCompatActivity {
 
     private RecyclerView CustomerRequestRecyclerView;
-    private Button EditStoreBtn,LogOutBtn;
+    private Button EditStoreBtn,LogOutBtn,Orders;
 
     private DatabaseReference databaseReference;
 
@@ -42,6 +43,14 @@ public class AdminDashboard extends AppCompatActivity {
 //        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         EditStoreBtn = findViewById(R.id.store_btn);
         LogOutBtn = findViewById(R.id.logout_btn);
+        Orders = findViewById(R.id.orders_btn);
+
+        Orders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AdminDashboard.this,AdminViewOrders.class));
+            }
+        });
 
         LogOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
