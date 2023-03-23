@@ -13,15 +13,45 @@ public class CustomerOrderList {
     private String paymentType;
     private String subTotal;
 
+    private String riderName;
+    private String waitingTime;
+
     private List<CustomerOrderItemList> customerOrderItemList;
 
     public CustomerOrderList(){}
-    public CustomerOrderList(List<CustomerOrderItemList> customerOrderItemList,String subTotal,String status,String address,String paymentType){
+    public CustomerOrderList(List<CustomerOrderItemList> customerOrderItemList,String subTotal
+                             ,String riderName,String waitingTime,String status,String address,String paymentType){
         this.status = status;
         this.address = address;
         this.paymentType = paymentType;
         this.customerOrderItemList = customerOrderItemList;
         this.subTotal = subTotal;
+        this.riderName = riderName;
+        this.waitingTime = waitingTime;
+    }
+
+    public String getWaitingTime() {
+        return waitingTime;
+    }
+
+    public String getRiderName() {
+        return riderName;
+    }
+
+    public String getUserKey() {
+        return userKey;
+    }
+
+    public void setWaitingTime(String waitingTime) {
+        this.waitingTime = waitingTime;
+    }
+
+    public void setRiderName(String riderName) {
+        this.riderName = riderName;
+    }
+
+    public void setUserKey(String userKey) {
+        this.userKey = userKey;
     }
 
     public void setParentKey(String userKey) {

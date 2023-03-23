@@ -42,6 +42,9 @@ public class CustomerOrderListAdapter extends RecyclerView.Adapter<CustomerOrder
         holder.OrderPaymentType.setText(customerOrderList.getPaymentType());
         holder.SubTotal.setText(customerOrderList.getSubTotal());
 
+        holder.RiderName.setText(customerOrderList.getRiderName());
+        holder.WaitingTime.setText(customerOrderList.getWaitingTime());
+
         if(customerOrderList.getStatus().equals("ToShip")){
             holder.ToShip.setBackgroundResource(R.drawable.status_circle_view);
             holder.ToShipBar.setBackgroundResource(R.color.white);
@@ -94,7 +97,7 @@ public class CustomerOrderListAdapter extends RecyclerView.Adapter<CustomerOrder
 
     class taskViewHolder extends RecyclerView.ViewHolder {
 
-        TextView OrderId,ToShip,ToReceive,Completed,AfterCompleted,OrderAddress,OrderPaymentType,SubTotal;
+        TextView OrderId,ToShip,ToReceive,Completed,AfterCompleted,OrderAddress,OrderPaymentType,SubTotal,RiderName,WaitingTime;
         View ToShipBar,ToReceiveBar,CompletedBar;
 
         RecyclerView OrderRv;
@@ -117,6 +120,8 @@ public class CustomerOrderListAdapter extends RecyclerView.Adapter<CustomerOrder
             OrderAddress = itemView.findViewById(R.id.order_address);
             OrderPaymentType = itemView.findViewById(R.id.order_payment_type);
             SubTotal = itemView.findViewById(R.id.order_subtotal);
+            RiderName = itemView.findViewById(R.id.rider_name);
+            WaitingTime = itemView.findViewById(R.id.waiting_time);
 
         }
     }

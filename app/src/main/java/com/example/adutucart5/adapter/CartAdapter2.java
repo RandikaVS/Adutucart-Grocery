@@ -1,8 +1,11 @@
 package com.example.adutucart5.adapter;
 
+import static android.os.ParcelFileDescriptor.MODE_APPEND;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +53,7 @@ public class CartAdapter2 extends FirebaseRecyclerAdapter<Cart2, CartAdapter2.ta
     Context context;
     private DatabaseReference databaseReference,databaseReference2;
     private FirebaseAuth mAuth;
+
 
     public CartAdapter2(@NonNull FirebaseRecyclerOptions<Cart2> options,Context context) {
 
@@ -209,6 +213,18 @@ public class CartAdapter2 extends FirebaseRecyclerAdapter<Cart2, CartAdapter2.ta
     }
 
     public void CheckOutCart(String total,String address,String paymentType){
+
+        SharedPreferences sharedpreferences;
+        String token="null";
+
+        sharedpreferences = context.getSharedPreferences("user_shared_prefs", Context.MODE_PRIVATE);
+
+        if(sharedpreferences.getString("token", "")!=null){
+            token = sharedpreferences.getString("token", "");
+        }
+
+
+
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         mAuth=FirebaseAuth.getInstance();
         databaseReference = db.getReference("Orders").child(mAuth.getCurrentUser().getUid()).push();
@@ -219,6 +235,12 @@ public class CartAdapter2 extends FirebaseRecyclerAdapter<Cart2, CartAdapter2.ta
         hashMap.put("address",address);
         hashMap.put("paymentType",paymentType);
         hashMap.put("status","Pending");
+        hashMap.put("waitingTime"," ");
+        hashMap.put("riderName","");
+        hashMap.put("riderMobile","");
+        hashMap.put("riderId","");
+        hashMap.put("riderPickupKey","");
+        hashMap.put("token",token);
         Task task = null;
 
         List<Order2> order2ArrayList = new ArrayList<>();
