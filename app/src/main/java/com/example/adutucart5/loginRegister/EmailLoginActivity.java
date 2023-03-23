@@ -1,5 +1,7 @@
 package com.example.adutucart5.loginRegister;
 
+import static com.example.adutucart5.activity.BaseActivity.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -29,6 +32,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class EmailLoginActivity extends AppCompatActivity {
 
@@ -40,6 +44,7 @@ public class EmailLoginActivity extends AppCompatActivity {
     SharedPreferences sharedpreferences;
     private DatabaseReference databaseReference;
     private ImageView BackBtn;
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +66,22 @@ public class EmailLoginActivity extends AppCompatActivity {
                 startActivity(new Intent(EmailLoginActivity.this,LoginRegisterMainActivity.class));
             }
         });
+
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        token = task.getResult();
+
+
+                    }
+                });
 
 
         UserDb userDb = new UserDb();
@@ -123,6 +144,7 @@ public class EmailLoginActivity extends AppCompatActivity {
                                                     editor.putString("passwordKey", password);
                                                     editor.putString("profile_image", profile_image);
                                                     editor.putString("user_name", userName);
+                                                    editor.putString("token", token);
 
                                                     editor.apply();
                                                     Toast.makeText(EmailLoginActivity.this, "Logged in successfully", Toast.LENGTH_SHORT).show();

@@ -49,6 +49,8 @@ public class FirebaseRepo {
                     customerOrderList.setPaymentType(ds.child("paymentType").getValue(String.class));
                     customerOrderList.setStatus(ds.child("status").getValue(String.class));
                     customerOrderList.setSubTotal(ds.child("subTotal").getValue(String.class));
+                    customerOrderList.setRiderName(ds.child("riderName").getValue(String.class));
+                    customerOrderList.setWaitingTime(ds.child("waitingTime").getValue(String.class));
                     customerOrderList.setKey((ds.getKey()));
 
 
