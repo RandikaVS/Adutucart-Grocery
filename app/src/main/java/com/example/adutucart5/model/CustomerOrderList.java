@@ -13,14 +13,19 @@ public class CustomerOrderList {
     private String paymentType;
     private String subTotal;
 
+    private String riderId;
+
     private String riderName;
     private String waitingTime;
+
+    private String evidence;
 
     private List<CustomerOrderItemList> customerOrderItemList;
 
     public CustomerOrderList(){}
     public CustomerOrderList(List<CustomerOrderItemList> customerOrderItemList,String subTotal
-                             ,String riderName,String waitingTime,String status,String address,String paymentType){
+                             ,String riderName,String waitingTime,String status,String address
+            ,String paymentType,String evidence,String riderId){
         this.status = status;
         this.address = address;
         this.paymentType = paymentType;
@@ -28,6 +33,24 @@ public class CustomerOrderList {
         this.subTotal = subTotal;
         this.riderName = riderName;
         this.waitingTime = waitingTime;
+        this.evidence = evidence;
+        this.riderId = riderId;
+    }
+
+    public String getRiderId() {
+        return riderId;
+    }
+
+    public void setRiderId(String riderId) {
+        this.riderId = riderId;
+    }
+
+    public String getEvidence() {
+        return evidence;
+    }
+
+    public void setEvidence(String evidence) {
+        this.evidence = evidence;
     }
 
     public String getWaitingTime() {

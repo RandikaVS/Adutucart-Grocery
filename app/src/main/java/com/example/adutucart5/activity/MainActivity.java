@@ -1,5 +1,7 @@
 package com.example.adutucart5.activity;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -7,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,6 +39,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.example.adutucart5.fragment.HomeFragment;
 import com.example.adutucart5.fragment.OffrersFragment;
@@ -142,6 +146,19 @@ public class MainActivity extends BaseActivity
                         .setAction("Action", null).show();
             }
         });
+
+        FirebaseMessaging.getInstance().subscribeToTopic("users")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "Subscribed";
+                        if (!task.isSuccessful()) {
+                            msg = "Subscribe failed";
+                        }
+                        Log.d(TAG, msg);
+                    }
+                });
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("pickup");
 
 
         localStorage = new LocalStorage(getApplicationContext());

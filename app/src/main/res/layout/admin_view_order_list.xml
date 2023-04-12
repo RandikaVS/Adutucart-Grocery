@@ -146,6 +146,27 @@
                     android:hint="customer_mobile"/>
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rider Name  "
+                    android:textStyle="bold"
+                    android:layout_marginTop="-15dp"
+                    android:padding="10dp"/>
+
+                <TextView
+                    android:id="@+id/rider_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-15dp"
+                    android:hint="not picked up yet"/>
+            </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -188,13 +209,36 @@
                     android:textStyle="bold"
                     android:padding="10dp"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Evidence"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="40dp"/>
+
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Order Status"
+                android:layout_gravity="bottom"
                 android:padding="10dp"/>
+
+                <ImageView
+                    android:id="@+id/evidence"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="50dp"
+                    android:src="@drawable/no_image"/>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

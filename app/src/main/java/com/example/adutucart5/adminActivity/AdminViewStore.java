@@ -59,21 +59,21 @@ public class AdminViewStore extends AppCompatActivity {
                 myEdit.putString("store", key);
 
         myEdit.commit();
-        if(key.equals("SM")){
-            StoreName.setText("SM");
-            StoreImage.setImageResource(R.drawable.sm_new);
+        if(key.equals("HardwareSection")){
+            StoreName.setText("Hardware Section");
+            StoreImage.setImageResource(R.drawable.hardware_section);
         }
-        else if(key.equals("SuperMarket456")){
-            StoreName.setText("VictoriaSupermarket");
-            StoreImage.setImageResource(R.drawable.victoria_supermarket);
+        else if(key.equals("MeatSection")){
+            StoreName.setText("Meat Section");
+            StoreImage.setImageResource(R.drawable.meat_section);
         }
-        else if(key.equals("Robinson")){
-            StoreName.setText("Robinson");
-            StoreImage.setImageResource(R.drawable.robinsons_new);
+        else if(key.equals("ProductSection")){
+            StoreName.setText("Product Section");
+            StoreImage.setImageResource(R.drawable.product_section);
         }
-        else if(key.equals("MarketPlace")){
-            StoreName.setText("Market Place");
-            StoreImage.setImageResource(R.drawable.no_image);
+        else if(key.equals("VegetableSection")){
+            StoreName.setText("VegetableSection");
+            StoreImage.setImageResource(R.drawable.vegetable_section);
         }
 
         ProductRecyclerView.setLayoutManager(new WrapContentLinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));

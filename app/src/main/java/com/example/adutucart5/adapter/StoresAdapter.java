@@ -75,18 +75,18 @@ public class StoresAdapter extends RecyclerView.Adapter<StoresAdapter.Viewholder
                     case 1:
 
                         Intent intent2 = new Intent(context, StoreProducts.class);
-                        intent2.putExtra("store_name","VictoriaSupermarket");
+                        intent2.putExtra("store_name","MeatSection");
                         context.startActivity(intent2);
                         break;
                     case 2:
                         Intent intent3 = new Intent(context, StoreProducts.class);
-                        intent3.putExtra("store_name","Robinson");
+                        intent3.putExtra("store_name","ProductSection");
                         context.startActivity(intent3);
                         break;
 
                     case 3:
                         Intent intent4 = new Intent(context, StoreProducts.class);
-                        intent4.putExtra("store_name","MarketPlace");
+                        intent4.putExtra("store_name","VegetableSection");
                         context.startActivity(intent4);
                         break;
                 }

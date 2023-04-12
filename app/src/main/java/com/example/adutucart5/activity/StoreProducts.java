@@ -105,21 +105,21 @@ public class StoreProducts extends AppCompatActivity {
     }
 
     private void setStoreDetails(String key){
-        if(key.equals("SM")){
-            StoreName.setText("SM Store");
-            StoreImage.setImageResource(R.drawable.sm_new);
+        if(key.equals("HardwareSection")){
+            StoreName.setText("Hardware Section");
+            StoreImage.setImageResource(R.drawable.hardware_section);
         }
-        if(key.equals("VictoriaSupermarket")){
-            StoreName.setText("Victoria Supermarket");
-            StoreImage.setImageResource(R.drawable.victoria_supermarket);
+        if(key.equals("MeatSection")){
+            StoreName.setText("Meat Section");
+            StoreImage.setImageResource(R.drawable.meat_section);
         }
-        else if(key.equals("Robinson")){
-            StoreName.setText("Robinson Store");
-            StoreImage.setImageResource(R.drawable.robinsons_new);
+        else if(key.equals("ProductSection")){
+            StoreName.setText("Product Section");
+            StoreImage.setImageResource(R.drawable.product_section);
         }
-        else if(key.equals("MarketPlace")){
-            StoreName.setText("Market Place");
-            StoreImage.setImageResource(R.drawable.no_image);
+        else if(key.equals("VegetableSection")){
+            StoreName.setText("Vegetable Section");
+            StoreImage.setImageResource(R.drawable.vegetable_section);
         }
     }
 }

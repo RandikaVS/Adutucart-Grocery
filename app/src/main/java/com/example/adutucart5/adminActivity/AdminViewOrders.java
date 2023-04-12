@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -58,6 +59,7 @@ public class AdminViewOrders extends AppCompatActivity {
         firebaseViewModel.getAllDataAdmin();
 
         firebaseViewModel.getOrderMutableLiveDataAdmin().observe(this, new Observer<List<CustomerOrderList>>() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onChanged(List<CustomerOrderList> customerOrderLists) {
                 adminViewOrdersAdapter.setAdminOrderList(customerOrderLists);
