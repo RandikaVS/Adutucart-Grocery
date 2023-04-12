@@ -27,15 +27,12 @@ public class pushNotificationService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
-        String title="",text="not informed yet";
-        if(remoteMessage.getNotification()!=null) {
-            title = remoteMessage.getNotification().getTitle();
-            text = remoteMessage.getNotification().getBody();
-        }
+        String title="title",text="body";
+
+        title = remoteMessage.getData().get("title");
+        text = remoteMessage.getData().get("message");
 
         sendNotification(title,pushNotificationService.this,text);
-
-
     }
 
     public void sendNotification(String title, Context context, String text) {
@@ -43,8 +40,8 @@ public class pushNotificationService extends FirebaseMessagingService {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
                 .setSmallIcon(R.drawable.add_icon)
-                .setContentTitle("Your order "+title+" has pickup by rider")
-                .setContentText("Waiting time is " +text)
+                .setContentTitle(title)
+                .setContentText(text)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setAutoCancel(true);
@@ -53,8 +50,11 @@ public class pushNotificationService extends FirebaseMessagingService {
         Intent intent = new Intent(context, MyOrderFragment.class);
         PendingIntent pendingIntent = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+
             pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+
         }
+
         builder.setContentIntent(pendingIntent);
 
         notificationManager = (NotificationManager) getSystemService(Context. NOTIFICATION_SERVICE ) ;

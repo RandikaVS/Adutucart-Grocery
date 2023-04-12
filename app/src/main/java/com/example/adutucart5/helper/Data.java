@@ -125,13 +125,13 @@ public class Data {
 
     public List<Stores> getStoreList(){
 
-        Stores stores = new Stores(R.drawable.sm_new,"SM");
+        Stores stores = new Stores(R.drawable.hardware_section,"HardwareSection");
         storesList.add(stores);
-        stores  = new Stores(R.drawable.victoria_supermarket,"Victoria Supermarket");
+        stores  = new Stores(R.drawable.meat_section,"MeatSection");
         storesList.add(stores);
-        stores  = new Stores(R.drawable.robinsons_new,"Robinson");
+        stores  = new Stores(R.drawable.product_section,"ProductSection");
         storesList.add(stores);
-        stores  = new Stores(R.drawable.market_place,"Market Place");
+        stores  = new Stores(R.drawable.vegetable_section,"VegetableSection");
         storesList.add(stores);
 
         return storesList;

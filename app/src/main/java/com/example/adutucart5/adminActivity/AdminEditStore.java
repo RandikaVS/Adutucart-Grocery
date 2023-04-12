@@ -15,7 +15,7 @@ import com.example.adutucart5.R;
 public class AdminEditStore extends AppCompatActivity {
 
 
-    private CardView SM,VictoriaSupermarket,Robinson,MarketPlace;
+    private CardView HardwareSection,MeatSection,ProductSection,VegetableSection;
     private ImageView DashboardBackBtn;
 
     @Override
@@ -24,11 +24,11 @@ public class AdminEditStore extends AppCompatActivity {
         setContentView(R.layout.activity_admin_edit_store);
         getSupportActionBar().hide();
 
-        SM = findViewById(R.id.sm_store);
-        VictoriaSupermarket = findViewById(R.id.victoria_supermarket);
-        Robinson = findViewById(R.id.robinson_store);
+        HardwareSection = findViewById(R.id.hardware_section);
+        MeatSection = findViewById(R.id.meat_section);
+        ProductSection = findViewById(R.id.product_section);
         DashboardBackBtn = findViewById(R.id.dashboard_back_btn);
-        MarketPlace = findViewById(R.id.marketplace_store);
+        VegetableSection = findViewById(R.id.vegetable_section);
 
         SharedPreferences preferences = getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
         preferences.edit().remove("store").commit();
@@ -41,40 +41,40 @@ public class AdminEditStore extends AppCompatActivity {
             }
         });
 
-        SM.setOnClickListener(new View.OnClickListener() {
+        HardwareSection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String key = "SM";
+                String key = "HardwareSection";
                 Intent intent = new Intent(AdminEditStore.this,AdminViewStore.class);
                 intent.putExtra("storeName",key);
                 startActivity(intent);
             }
         });
 
-        VictoriaSupermarket.setOnClickListener(new View.OnClickListener() {
+        MeatSection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String key = "VictoriaSupermarket";
+                String key = "MeatSection";
                 Intent intent = new Intent(AdminEditStore.this,AdminViewStore.class);
                 intent.putExtra("storeName",key);
                 startActivity(intent);
             }
         });
 
-        Robinson.setOnClickListener(new View.OnClickListener() {
+        ProductSection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String key = "Robinson";
+                String key = "ProductSection";
                 Intent intent = new Intent(AdminEditStore.this,AdminViewStore.class);
                 intent.putExtra("storeName",key);
                 startActivity(intent);
             }
         });
 
-        MarketPlace.setOnClickListener(new View.OnClickListener() {
+        VegetableSection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String key = "MarketPlace";
+                String key = "VegetableSection";
                 Intent intent = new Intent(AdminEditStore.this,AdminViewStore.class);
                 intent.putExtra("storeName",key);
                 startActivity(intent);

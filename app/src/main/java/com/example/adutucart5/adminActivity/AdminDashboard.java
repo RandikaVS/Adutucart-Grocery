@@ -1,5 +1,8 @@
 package com.example.adutucart5.adminActivity;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,6 +13,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -19,9 +23,12 @@ import com.example.adutucart5.adapter.CustomerRequestViewAdapter;
 import com.example.adutucart5.model.Order;
 import com.example.adutucart5.model.User;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class AdminDashboard extends AppCompatActivity {
 
@@ -44,6 +51,20 @@ public class AdminDashboard extends AppCompatActivity {
         EditStoreBtn = findViewById(R.id.store_btn);
         LogOutBtn = findViewById(R.id.logout_btn);
         Orders = findViewById(R.id.orders_btn);
+
+
+        FirebaseMessaging.getInstance().subscribeToTopic("pickup")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "Subscribed";
+                        if (!task.isSuccessful()) {
+                            msg = "Subscribe failed";
+                        }
+                        Log.d(TAG, msg);
+                    }
+                });
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("users");
 
         Orders.setOnClickListener(new View.OnClickListener() {
             @Override

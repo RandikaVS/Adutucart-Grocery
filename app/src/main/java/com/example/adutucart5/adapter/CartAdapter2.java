@@ -233,13 +233,13 @@ public class CartAdapter2 extends FirebaseRecyclerAdapter<Cart2, CartAdapter2.ta
         HashMap<String,Object> hashMap = new HashMap<>();
         hashMap.put("subTotal",total);
         hashMap.put("address",address);
+        hashMap.put("evidence","null");
         hashMap.put("paymentType",paymentType);
         hashMap.put("status","Pending");
         hashMap.put("waitingTime"," ");
-        hashMap.put("riderName","");
-        hashMap.put("riderMobile","");
-        hashMap.put("riderId","");
-        hashMap.put("riderPickupKey","");
+        hashMap.put("riderName","null");
+        hashMap.put("riderMobile","null");
+        hashMap.put("riderId","null");
         hashMap.put("token",token);
         Task task = null;
 

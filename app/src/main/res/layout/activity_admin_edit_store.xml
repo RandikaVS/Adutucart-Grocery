@@ -46,7 +46,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Stores"
+            android:text="Sections"
             android:layout_gravity="center"
             android:textSize="25sp"/>
 
@@ -68,7 +68,7 @@
 
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/sm_store"
+                    android:id="@+id/hardware_section"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:cardElevation="10dp"
@@ -82,7 +82,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="SM "
+                        android:text="Hardware Section"
                         android:layout_gravity="top"
                         android:textColor="@color/black"
                         android:layout_marginLeft="20dp"
@@ -96,13 +96,13 @@
                         android:layout_height="200dp"
                         android:layout_marginTop="20dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/sm_new"
+                        android:src="@drawable/hardware_section"
                         android:contentDescription="@string/app_name" />
 
 
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/victoria_supermarket"
+                    android:id="@+id/meat_section"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardElevation="10dp"
@@ -116,7 +116,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Victoria Supermarket"
+                        android:text="Meat Section"
                         android:layout_gravity="top"
                         android:layout_marginTop="5dp"
                         android:textColor="@color/black"
@@ -132,13 +132,13 @@
                         android:layout_height="200dp"
                         android:layout_marginTop="20dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/victoria_supermarket"
+                        android:src="@drawable/meat_section"
                         android:contentDescription="@string/app_name" />
 
 
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/robinson_store"
+                    android:id="@+id/product_section"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardElevation="10dp"
@@ -153,7 +153,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Robinson"
+                        android:text="Product Section"
                         android:layout_gravity="top"
                         android:layout_marginTop="5dp"
                         android:layout_marginLeft="10dp"
@@ -167,14 +167,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/robinsons_new"
+                        android:src="@drawable/product_section"
                         android:layout_marginTop="20dp"
                         android:contentDescription="@string/app_name" />
 
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/marketplace_store"
+                    android:id="@+id/vegetable_section"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardElevation="10dp"
@@ -189,7 +189,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Market Place"
+                        android:text="Vegetable Section"
                         android:layout_gravity="top"
                         android:layout_marginTop="5dp"
                         android:layout_marginLeft="10dp"
@@ -203,7 +203,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/market_place"
+                        android:src="@drawable/vegetable_section"
                         android:layout_marginTop="20dp"
                         android:contentDescription="@string/app_name" />
 

@@ -33,6 +33,7 @@ import com.example.adutucart5.activity.MainActivity;
 import com.example.adutucart5.model.Category;
 import com.example.adutucart5.model.CustomerOrderList;
 import com.example.adutucart5.model.Product2;
+import com.example.adutucart5.model.Stores;
 import com.example.adutucart5.model.User;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
@@ -98,9 +99,14 @@ public class HomeFragment extends Fragment {
         marketplaceRecyclerView.setLayoutManager(new WrapContentLinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
 
 
+        Data data1 = new Data();
+
+        List<Stores> storesList;
+
+        storesList = data1.getStoreList();
 
 //
-        Query query = databaseReference.child("SM");
+        Query query = databaseReference.child(storesList.get(0).getStore_name());
 
 
         // It is a class provide by the FirebaseUI to make a
@@ -112,12 +118,12 @@ public class HomeFragment extends Fragment {
 
         // Connecting object of required Adapter class to
         // the Adapter class itself
-        homeProductAdapter = new HomeProductAdapter(options,getContext(),"Home","SM");
+        homeProductAdapter = new HomeProductAdapter(options,getContext(),"Home",storesList.get(0).getStore_name());
         // Connecting Adapter class with the Recycler view*/
         smRecyclerView.setAdapter(homeProductAdapter);
 
 
-        Query query2 = databaseReference.child("VictoriaSupermarket");
+        Query query2 = databaseReference.child(storesList.get(1).getStore_name());
 
 
         // It is a class provide by the FirebaseUI to make a
@@ -129,11 +135,11 @@ public class HomeFragment extends Fragment {
 
         // Connecting object of required Adapter class to
         // the Adapter class itself
-        homeProductAdapter2 = new HomeProductAdapter(options2,getContext(),"Home","VictoriaSupermarket");
+        homeProductAdapter2 = new HomeProductAdapter(options2,getContext(),"Home",storesList.get(1).getStore_name());
         // Connecting Adapter class with the Recycler view*/
         robinsonRecyclerView.setAdapter(homeProductAdapter2);
 
-        Query query3 = databaseReference.child("Robinson");
+        Query query3 = databaseReference.child(storesList.get(2).getStore_name());
 
 
         // It is a class provide by the FirebaseUI to make a
@@ -145,11 +151,11 @@ public class HomeFragment extends Fragment {
 
         // Connecting object of required Adapter class to
         // the Adapter class itself
-        homeProductAdapter3 = new HomeProductAdapter(options2,getContext(),"Home","Robinson");
+        homeProductAdapter3 = new HomeProductAdapter(options2,getContext(),"Home",storesList.get(2).getStore_name());
         // Connecting Adapter class with the Recycler view*/
         victoriaRecyclerView.setAdapter(homeProductAdapter3);
 
-        Query query4 = databaseReference.child("MarketPlace");
+        Query query4 = databaseReference.child(storesList.get(3).getStore_name());
 
 
         // It is a class provide by the FirebaseUI to make a
@@ -161,7 +167,7 @@ public class HomeFragment extends Fragment {
 
         // Connecting object of required Adapter class to
         // the Adapter class itself
-        homeProductAdapter4 = new HomeProductAdapter(options4,getContext(),"Home","MarketPlace");
+        homeProductAdapter4 = new HomeProductAdapter(options4,getContext(),"Home",storesList.get(3).getStore_name());
         // Connecting Adapter class with the Recycler view*/
         marketplaceRecyclerView.setAdapter(homeProductAdapter4);
 

@@ -1,5 +1,6 @@
 package com.example.adutucart5.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,7 +41,7 @@ import java.util.List;
 public class AdminViewOrdersAdapter extends RecyclerView.Adapter<AdminViewOrdersAdapter.taskViewHolder>{
 
     private List<CustomerOrderList> customerOrderLists;
-    private Context context;
+    private final Context context;
 
     private DatabaseReference userRef,databaseReference;
 
@@ -90,10 +92,14 @@ public class AdminViewOrdersAdapter extends RecyclerView.Adapter<AdminViewOrders
                     databaseReference = FirebaseDatabase.getInstance().getReference("Orders").child(customerOrderList.getParentKey()).child(customerOrderList.getKey());
 
                     databaseReference.updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @SuppressLint("NotifyDataSetChanged")
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             notifyDataSetChanged();
                             Toast.makeText(context, "Order status changed to " + selectedItem, Toast.LENGTH_SHORT).show();
+                            if(selectedItem.equals("Completed")){
+                                updateRider(context,customerOrderList.getRiderId());
+                            }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -111,10 +117,18 @@ public class AdminViewOrdersAdapter extends RecyclerView.Adapter<AdminViewOrders
 
         holder.OrderId.setText(customerOrderList.getKey());
 
+        if(!customerOrderList.getEvidence().equals("null")){
+            Glide.with(holder.itemView).load(customerOrderList.getEvidence()).placeholder(R.drawable.no_image).into(holder.Evidence);
+        }
+
 
         holder.OrderAddress.setText(customerOrderList.getAddress());
         holder.OrderPaymentType.setText(customerOrderList.getPaymentType());
         holder.SubTotal.setText(customerOrderList.getSubTotal());
+
+        if(!customerOrderList.getRiderName().equals("null")){
+            holder.RiderName.setText(customerOrderList.getRiderName());
+        }
 
         if(customerOrderList.getStatus().equals("ToShip")){
             holder.OrderStatus.setSelection(1);
@@ -187,10 +201,13 @@ public class AdminViewOrdersAdapter extends RecyclerView.Adapter<AdminViewOrders
 
     class taskViewHolder extends RecyclerView.ViewHolder {
 
-        TextView OrderId,ToShip,ToReceive,Completed,AfterCompleted,OrderAddress,OrderPaymentType,SubTotal,CustomerName,CustomerEmail,CustomerMobile;
+        TextView OrderId,ToShip,ToReceive,Completed,AfterCompleted,OrderAddress,
+                OrderPaymentType,SubTotal,CustomerName,CustomerEmail,CustomerMobile,RiderName;
         View ToShipBar,ToReceiveBar,CompletedBar;
 
         RecyclerView OrderRv;
+
+        ImageView Evidence;
 
         CardView OrderCard;
 
@@ -220,12 +237,41 @@ public class AdminViewOrdersAdapter extends RecyclerView.Adapter<AdminViewOrders
             CustomerEmail = itemView.findViewById(R.id.customer_email);
             CustomerMobile = itemView.findViewById(R.id.customer_mobile);
             ChangeStatusBtn = itemView.findViewById(R.id.change_status_btn);
+            Evidence = itemView.findViewById(R.id.evidence);
+            RiderName = itemView.findViewById(R.id.rider_name);
 
         }
     }
 
-    private void updateOrderStatus(){
+    private void updateRider(Context context,String riderId){
 
+        if(!riderId.isEmpty()) {
+
+            HashMap<String, Object> hashMap = new HashMap<>();
+            hashMap.put("pending","0");
+
+            databaseReference = FirebaseDatabase.getInstance().getReference("Rider");
+
+            databaseReference.child(riderId).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()){
+                        Toast.makeText(context, "Rider released", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(context, "Failed to release rider", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+        else{
+            Toast.makeText(context, "Rider id is empty!!!", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }
